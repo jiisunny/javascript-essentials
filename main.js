@@ -504,20 +504,54 @@
 // 예시 2 - 더 간결하게 작성한 예시
 // 생성자 함수를 js 클래스 개념를 통해 간결하게 작성할 수 있다
 
-class User {
-  constructor(first, last) {
-    this.firstName = first
-    this.lastName = last
-  }
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`
+// class User {
+//   constructor(first, last) {
+//     this.firstName = first
+//     this.lastName = last
+//   }
+//   getFullName() {
+//     return `${this.firstName} ${this.lastName}`
+//   }
+// }
+
+// const jisunny = new User('Jisuuny', 'Kim')
+// const amy = new User('Amy', 'Clarke')
+// const neo = new User('Neo', 'Smith')
+
+// console.log(jisunny) // User {firstName: 'Jisunny', lastName: 'Kim'}
+// console.log(amy.getFullName()) // Amy Clarke
+// console.log(neo.getFullName()) // Neo Smith
+
+
+// 상속(확장)
+
+class Vehicle {
+  constructor(name, wheel) {
+    this.name = name
+    this.wheel = wheel
   }
 }
+const myVehicle = new Vehicle('운송수단', 2)
+console.log(myVehicle)
 
-const jisunny = new User('Jisuuny', 'Kim')
-const amy = new User('Amy', 'Clarke')
-const neo = new User('Neo', 'Smith')
+class Bicycle extends Vehicle { // extends : 상속(확장), 이미 정의되어 있는 내용을 상속(확장)해서 사용가능
+  constructor(name, wheel) {
+    super(name, wheel)
+  }
+}
+const myBicycle = new Bicycle('삼천리', 2)
+const daughtersBicycle = new Bicycle('세발', 3)
+console.log(myBicycle)
+console.log(daughtersBicycle)
 
-console.log(jisunny) // User {firstName: 'Jisunny', lastName: 'Kim'}
-console.log(amy.getFullName()) // Amy Clarke
-console.log(neo.getFullName()) // Neo Smith
+class Car extends Vehicle { // 이미 정의 되어 있는 내용(Vehicle)을 상속해서 사용가능
+  constructor(name, wheel, license) {
+    super(name, wheel)
+    this.license = license
+  }
+}
+const myCar = new Car('벤츠', 4, true)
+const daughtersCar = new Car('포르쉐', 4, false)
+
+console.log(myCar)
+console.log(daughtersCar)

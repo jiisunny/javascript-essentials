@@ -1,7 +1,12 @@
 # JavaScript Essentials 👩🏻‍💻 - PART1. Node.js
 
+> 개념 정리 사이트 : [모던 JavaScript 튜토리얼](https://ko.javascript.info/)
+
+<br />
+
 JavaScript Essentials Node.js 개념 정리
-<br /><br />
+
+<br />
 
 ## 1. 개요 및 설치
 <br />
@@ -11,6 +16,13 @@ JavaScript Essentials Node.js 개념 정리
 - Node.js는 Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임(프로그래밍 언어가 동작하는 환경)
 - JavaScript 프로그래밍 언어는 컴퓨터와 웹브라우저(크롬)에서 동작함
 - Node.js를 배운다는 것은 컴퓨터를 제어하는 것을 배우는 것과 같다
+
+<br />
+
+- Node.js는 JavaScript를 서버에서도 사용할 수 있도록 만든 프로그램이다.
+- Node.js는 V8이라는 JavaScript 엔진 위에서 동작하는 자바스크립트 런타임(환경)이다.
+- Node.js는 서버사이트 스크립트 언어가 아니다. 프로그램(환경)이다.
+- Node.js는 웹서버와 같이 확장성 있는 네트워크 프로그램을 제작하기 위해 만들어졌다.
 
 <br />
 
@@ -24,35 +36,44 @@ JavaScript Essentials Node.js 개념 정리
 
 2. 설치유형 2 - nvm(Node.js version manager) `ios` 설치방법
 
-    1. 구글에서 nvm 검색
-    1. [Node Version Manager - GitHub](https://github.com/nvm-sh/nvm) 접속
-    1. 하단에 [Installing and Updating](https://github.com/nvm-sh/nvm#installing-and-updating) 클릭
-    1. 하단 내용 복사 (`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`)
-    1. VsCode - Terminal
+    ① 구글에서 nvm 검색 <br />
 
-        ```bash
-        $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-        $ nvm --version
-        ```
+    ② [Node Version Manager - GitHub](https://github.com/nvm-sh/nvm) 접속 <br />
 
-        - `nvm --version` : 설치 된 nvm 버전 확인 가능
+    ③ 하단에 [Installing and Updating](https://github.com/nvm-sh/nvm#installing-and-updating) 클릭 <br />
+
+    ④ 하단 내용 복사 (`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`) <br />
+
+    ⑤	 VsCode - Terminal <br />
+
+    ```bash
+    $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    $ nvm --version
+    ```
+
+    - `nvm --version` : 설치 된 nvm 버전 확인 가능
 
 <br />
 
 3. 설치유형 2 - nvm(Node.js version manager) `windows` 설치방법
 
-    1. 구글에서 nvm-windows 검색
-    1. [nvm-windows](https://github.com/coreybutler/nvm-windows) 접속
-    1. 하단에 [Download Now](https://github.com/coreybutler/nvm-windows/releases) 클릭
-    1. 하단에 `nvm-setup.zip` 클릭
-    1. 압축풀고 설치
-    1. VsCode - Terminal (powershell 로 오픈)
+    ① 구글에서 nvm-windows 검색 <br />
 
-        ```bash
-        $ nvm --version
-        ```
+    ② [nvm-windows](https://github.com/coreybutler/nvm-windows) 접속 <br />
 
-        - `nvm --version` : 설치 된 nvm 버전 확인 가능
+    ③ 하단에 [Download Now](https://github.com/coreybutler/nvm-windows/releases) 클릭 <br />
+
+    ④ 하단에 `nvm-setup.zip` 클릭 <br />
+
+    ⑤ 압축풀고 설치 <br />
+
+    ⑥ VsCode - Terminal (powershell 로 오픈) <br />
+
+    ```bash
+    $ nvm --version
+    ```
+
+    - `nvm --version` : 설치 된 nvm 버전 확인 가능
 <br /><br />
 
 ## 2. NVM(Node.js Version Manager) 사용법
@@ -280,12 +301,11 @@ $ npm run build
 ```
 
 - dist 폴더 생성됨
-<br />
 
-> dist 폴더
-> - 코드가 난독화 되어있음
-> - 빌드된 결과(제품)는 브라우저에서 해석되는 용도
-> - 용량을 축소하고 읽기 어렵게 만드는 등의 최적화를 거치는 것이 좋음
+  > dist 폴더
+  > - 코드가 난독화 되어있음
+  > - 빌드된 결과(제품)는 브라우저에서 해석되는 용도
+  > - 용량을 축소하고 읽기 어렵게 만드는 등의 최적화를 거치는 것이 좋음
 
 5. main.js 파일도 난독화가 되어있다
 - Parcel-bundler 패키지가 lodash를 포함한 패키지까지 같이 묶어 번들되어 결과를 보여줌
@@ -328,7 +348,7 @@ $ npm —version
 
 5. 설치 및 업데이트
 
-    1. VsCode - Terminal
+    ① VsCode - Terminal <br />
 
     ```bash
     $ npm info lodash
@@ -340,7 +360,7 @@ $ npm —version
     - `npm install lodash@4.17.20` : 해당 버전으로 패키지 설치
     - `npm update lodash` : loadash 패키지 최신으로 업데이트
 
-    2. 캐롯 기호 (^) 를 제거하면 업데이트가 해당 버전으로 업데이트 된다
+    ②	 캐롯 기호 (^) 를 제거하면 업데이트가 해당 버전으로 업데이트 된다
 <br /><br />
 
 ## 6. NPM 프로젝트의 버전 관리 (.gitignore)
@@ -1248,4 +1268,48 @@ const neo = new User('Neo', 'Smith')
 console.log(jisunny)
 console.log(amy.getFullName())
 console.log(neo.getFullName())
+```
+<br /><br />
+
+## 4. 상속(확장)
+<br />
+
+### [상속(확장)]
+
+클래스 상속을 사용하면 클래스를 다른 클래스로 확장할 수 있다. <br />
+기존에 존재하던 기능을 토대로 새로운 기능을 만들 수 있다.
+
+```javascript
+// 상속(확장)
+
+class Vehicle {
+  constructor(name, wheel) {
+    this.name = name
+    this.wheel = wheel
+  }
+}
+const myVehicle = new Vehicle('운송수단', 2)
+console.log(myVehicle)
+
+class Bicycle extends Vehicle { // extends : 상속(확장), 이미 정의되어 있는 내용을 상속(확장)해서 사용가능
+  constructor(name, wheel) {
+    super(name, wheel)
+  }
+}
+const myBicycle = new Bicycle('삼천리', 2)
+const daughtersBicycle = new Bicycle('세발', 3)
+console.log(myBicycle)
+console.log(daughtersBicycle)
+
+class Car extends Vehicle { // 이미 정의 되어 있는 내용(Vehicle)을 상속해서 사용가능
+  constructor(name, wheel, license) {
+    super(name, wheel)
+    this.license = license
+  }
+}
+const myCar = new Car('벤츠', 4, true)
+const daughtersCar = new Car('포르쉐', 4, false)
+
+console.log(myCar)
+console.log(daughtersCar)
 ```
