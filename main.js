@@ -465,4 +465,59 @@
 // timer.timeout() // Jisunny!!, 2초 뒤에 실행됨
 
 
-// 
+// ES6 Classes
+
+// 생략가능한 함수 예시
+// 객체데이터 내부에서 일반함수를 사용할 때 ': function ' 키워드 생략가능
+// const jisunny = {
+//   name: 'Jisunny',
+//   //normal: function () { // ': function ' 생략가능함
+//   normal() { 
+//     console.log(this.name)
+//   },
+//   arrow: () => {
+//     console.log(this.name)
+//   }
+// }
+
+// jisunny.normal() // Jisunny
+// jisunny.arrow() // undefined
+
+// 예시 1 - 기본 유형 예시
+
+// function User(first, last) {
+//   this.firstName = first
+//   this.lastName = last
+// }
+// User.prototype.getFullName = function () {
+//   return `${this.firstName} ${this.lastName}`
+// }
+
+// const jisunny = new User('Jisuuny', 'Kim')
+// const amy = new User('Amy', 'Clarke')
+// const neo = new User('Neo', 'Smith')
+
+// console.log(jisunny)
+// console.log(amy.getFullName())
+// console.log(neo.getFullName())
+
+// 예시 2 - 더 간결하게 작성한 예시
+// 생성자 함수를 js 클래스 개념를 통해 간결하게 작성할 수 있다
+
+class User {
+  constructor(first, last) {
+    this.firstName = first
+    this.lastName = last
+  }
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`
+  }
+}
+
+const jisunny = new User('Jisuuny', 'Kim')
+const amy = new User('Amy', 'Clarke')
+const neo = new User('Neo', 'Smith')
+
+console.log(jisunny) // User {firstName: 'Jisunny', lastName: 'Kim'}
+console.log(amy.getFullName()) // Amy Clarke
+console.log(neo.getFullName()) // Neo Smith

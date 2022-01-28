@@ -1061,6 +1061,8 @@ console.log(neo.getFullName())
 - 메모리의 효율적인 관리를 위해서 자바스크립트의 클래스 개념을 적용해서 작업한다
 
 ```javascript
+// 위와 같이 같은 로직이 반복되면 데이터가 무거워진다
+// 메모리의 효율적인 관리를 위해서 자바스크립트의 클래스 개념을 적용해서 작업한다
 function User(first, last) {
   this.firstName = first
   this.lastName = last
@@ -1076,6 +1078,174 @@ const neo = new User('Neo', 'Smith')
 // 자바스크립트의 클래스라고 하기도 한다 -> 구분하기 위해 PascalCase(앞에만 대문자)로 작성한다
 
 console.log(jisunny.getFullName())
+console.log(amy.getFullName())
+console.log(neo.getFullName())
+```
+<br /><br />
+
+## 2. This
+<br />
+
+### [생성자 함수(prototype)]
+
+```javascript
+// this
+// 일반(Normal) 함수는 호출 위치에서 따라 this 정의!
+// 화살표(Arrow) 함수는 자신이 선언된 함수 범위에서 this 정의!
+
+const jisunny = {
+  name: 'Jisunny',
+  normal: function () {
+    console.log(this.name)
+  },
+  arrow: () => {
+    console.log(this.name)
+  }
+}
+jisunny.normal() // Jisunny, 일반함수
+jisunny.arrow() // undefined, 화살표(Arrow) 함수, 호출범위 상관없음
+
+const amy = {
+  name: 'Amy',
+  normal: jisunny.normal,
+  arrow: jisunny.arrow
+}
+amy.normal() // Amy
+amy.arrow() // undefined
+```
+<br />
+
+### [this 예시 1 - 생성자 함수(prototype) 에서 this의 정의]
+
+```javascript
+// this 예시 1 - 생성자 함수(prototype) 에서 this의 정의
+
+function User(name) { // User : 생성자 함수
+  this.name = name
+}
+User.prototype.normal = function () {
+  console.log(this.name)
+}
+User.prototype.arrow = () => {
+  console.log(this.name)
+}
+
+const jisunny = new User('Jisunny')
+
+jisunny.normal() // Jisunny
+jisunny.arrow() // undefined
+```
+<br />
+
+### [this 예시 2 - 일반함수]
+
+```javascript
+// this 예시 2 - 일반 함수
+
+const timer = {
+  name: 'Jisunny!',
+  timeout: function () {
+    // setTimeout(함수, 시간)
+    setTimeout(function () {
+      console.log(this.name) // setTimeout 함수 내부 로직에서 콜백이 들어가 실행됨
+    }, 2000)
+  }
+}
+timer.timeout() // undefined, 2초 뒤에 실행됨
+```
+<br />
+
+### [this 예시 3 - 화살표 함수]
+
+```javascript
+//  this 예시 3 - 화살표 함수
+
+const timer = {
+  name: 'Jisunny!!',
+  timeout: function () {
+    // setTimeout(함수, 시간)
+    setTimeout(() => {
+      console.log(this.name)
+    }, 2000)
+  }
+}
+timer.timeout() // Jisunny!!, 2초 뒤에 실행됨
+```
+<br /><br />
+
+## 3. ES6 Classes
+<br />
+
+### [생략가능한 함수 예시]
+
+객체데이터 내부에서 일반함수를 사용할 때 ': function ' 키워드 생략가능
+
+```javascript
+// 생략가능한 함수 예시
+// 객체데이터 내부에서 일반함수를 사용할 때 ': function ' 키워드 생략가능
+
+const jisunny = {
+  name: 'Jisunny',
+  //normal: function () { // ': function ' 생략가능함
+  normal() { 
+    console.log(this.name)
+  },
+  arrow: () => {
+    console.log(this.name)
+  }
+}
+
+jisunny.normal() // Jisunny
+jisunny.arrow() // undefined
+```
+<br />
+
+### [예시 1 -  기본 유형 예시]
+
+```javascript
+// 예시 1 - 기본 유형 예시
+
+function User(first, last) {
+  this.firstName = first
+  this.lastName = last
+}
+User.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`
+}
+
+const jisunny = new User('Jisuuny', 'Kim')
+const amy = new User('Amy', 'Clarke')
+const neo = new User('Neo', 'Smith')
+
+console.log(jisunny)
+console.log(amy.getFullName())
+console.log(neo.getFullName())
+```
+<br />
+
+### [예시 2 -  더 간결하게 작성한 예시]
+
+위 예시를 js 클래스 개념를 통해 간결하게 작성할 수 있다
+
+```javascript
+// 예시 2 - 위 예시를 더 간결하게 작성한 예시
+// 생성자 함수를 js 클래스 개념를 통해 간결하게 작성할 수 있다
+
+class User {
+  constructor(first, last) {
+    this.firstName = first
+    this.lastName = last
+  }
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`
+  }
+}
+
+const jisunny = new User('Jisuuny', 'Kim')
+const amy = new User('Amy', 'Clarke')
+const neo = new User('Neo', 'Smith')
+
+console.log(jisunny)
 console.log(amy.getFullName())
 console.log(neo.getFullName())
 ```
